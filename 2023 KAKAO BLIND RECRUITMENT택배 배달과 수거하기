@@ -1,0 +1,12 @@
+def solution(cap, n, deliveries, pickups):
+    answer = 0
+    cur_del=0
+    cur_pick=0
+    for i in range(n,0,-1):
+        cur_del += deliveries[i-1]
+        cur_pick += pickups[i-1]
+        while cur_del > 0 or cur_pick > 0:
+            cur_del -=cap
+            cur_pick -=cap
+            answer += (i)*2
+    return answer
